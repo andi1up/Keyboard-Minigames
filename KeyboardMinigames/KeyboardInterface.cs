@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CUE.NET;
 using CUE.NET.Devices.Keyboard;
+using CUE.NET.Devices.Generic.Enums;
 using CUE.NET.Devices.Keyboard.Enums;
 using System.Drawing;
 
@@ -22,14 +23,14 @@ namespace KeyboardMinigames
 
         public void SetLed(int index, int r, int g, int b)
         {
-            SetLed((CorsairKeyboardKeyId)index, r, g, b);
+            SetLed((CorsairLedId)index, r, g, b);
         }
 
-        public void SetLed(CorsairKeyboardKeyId keyId, int r, int g, int b)
+        public void SetLed(CorsairLedId keyId, int r, int g, int b)
         {
             var key = Keyboard[keyId];
             if (key == null) { return; }
-            key.Led.Color = Color.FromArgb(r, g, b);
+            key.Color = Color.FromArgb(r, g, b);
         }
 
         public void Update()

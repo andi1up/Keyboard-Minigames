@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CUE.NET;
+using CUE.NET.Devices.Generic.Enums;
 using CUE.NET.Devices.Keyboard.Enums;
 
 /**
@@ -55,7 +56,7 @@ namespace KeyboardMinigames
         public int Length;
         public int WinThreshold;
 
-        public readonly int SleepTime = 150;
+        public readonly int SleepTime = 200;
 
         public List<Direction> MovementBuffer;
 
@@ -272,7 +273,7 @@ namespace KeyboardMinigames
             // Set everything to blue
             for (int i = 0; i < 144; i++)
             {
-                Keyboard.SetLed(i, 0, 255, 255);
+                Keyboard.SetLed(i, 70, 58, 1);
             }
 
             // Clear level section
@@ -286,13 +287,13 @@ namespace KeyboardMinigames
 
             // Draw food
             if (Food != null)
-                Keyboard.SetLed(ScreenMap[Food.X, Food.Y], 255, 255, 0);
+                Keyboard.SetLed(ScreenMap[Food.X, Food.Y], 0, 0, 255);
 
             // Draw snake
             var piece = Head;
             while(piece != null)
             {
-                Keyboard.SetLed(ScreenMap[piece.X, piece.Y], 255, 0, 0);
+                Keyboard.SetLed(ScreenMap[piece.X, piece.Y], 0, 255, 0);
                 piece = piece.Child;
             }
 
@@ -305,10 +306,11 @@ namespace KeyboardMinigames
             }
 
             // Arrow keys
-            Keyboard.SetLed(CorsairKeyboardKeyId.UpArrow, 0, 255, 0);
-            Keyboard.SetLed(CorsairKeyboardKeyId.DownArrow, 0, 255, 0);
-            Keyboard.SetLed(CorsairKeyboardKeyId.LeftArrow, 0, 255, 0);
-            Keyboard.SetLed(CorsairKeyboardKeyId.RightArrow, 0, 255, 0);
+            Keyboard.SetLed(CorsairLedId.UpArrow, 255, 0, 0);
+            Keyboard.SetLed(CorsairLedId.DownArrow, 255, 0, 0);
+            Keyboard.SetLed(CorsairLedId.LeftArrow, 255, 0, 0);
+            Keyboard.SetLed(CorsairLedId.RightArrow, 255, 0, 0);
+            
         }
     }
     
